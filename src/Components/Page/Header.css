@@ -1,0 +1,11 @@
+#header{
+    position: absolute;
+    top: 0;
+}
+#header span{
+    font-size: 40px;
+    margin: 5px;
+}
+#hostel5{
+    /* font-size: 50px; */
+}
