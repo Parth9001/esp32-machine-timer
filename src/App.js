@@ -36,6 +36,7 @@ import Header from "./Components/Page/Header";
 
 function App() {
   const [timer, setTimer] = useState(Date.now());
+  let updated_time;
 
   useEffect(() => {
     fetch("http://127.0.0.1:8000/timer/1")
@@ -48,6 +49,8 @@ function App() {
       .then((data) => {
         console.log(data.timer);
         let timeTaken = data.timer;
+        updated_time = data.updated_time;
+        console.log(updated_time);
         setTimer(timer + timeTaken * 1000 * 60);
       })
       .catch((error) => {

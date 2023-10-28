@@ -22,7 +22,7 @@ def time_taken(request):
     else:
         return Response(serializer.errors, status= status.HTTP_400_BAD_REQUEST)
 
-@api_view(['GET', 'PUT'])
+@api_view(['GET', 'PUT', 'DELETE'])
 def time(request,pk): 
     try:
         time = ESP.objects.get(pk=pk)
@@ -38,3 +38,7 @@ def time(request,pk):
             serializer.save()
             return Response(serializer.data)
         return Response(serializer.errors, status= status.HTTP_400_BAD_REQUEST)
+
+    if request.method == "DELETE":
+        time.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
