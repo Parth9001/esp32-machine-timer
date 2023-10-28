@@ -33,7 +33,7 @@ def time(request,pk):
         return Response(serializer.data)
 
     if request.method == "PUT":
-        serializer = TimerSerializer(1, data=request.data)
+        serializer = TimerSerializer(time, data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
