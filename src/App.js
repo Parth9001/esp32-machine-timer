@@ -36,10 +36,11 @@ import Header from "./Components/Page/Header";
 
 function App() {
   const [timer, setTimer] = useState(Date.now());
+  const [initTime, setInitTime] = useState(Date.now());
   let updated_time;
 
   useEffect(() => {
-    fetch("http://127.0.0.1:8000/timer/1")
+    fetch("http://192.168.0.111:8000/timer/1")
       .then((response) => {
         if (!response.ok) {
           throw new Error("Network response was not ok");
@@ -49,9 +50,11 @@ function App() {
       .then((data) => {
         console.log(data.timer);
         let timeTaken = data.timer;
-        updated_time = data.updated_time;
+        const weird_time = data.updated_time;
+        const date = new Date(weird_time);
+        updated_time = date.getTime();
         console.log(updated_time);
-        setTimer(timer + timeTaken * 1000 * 60);
+        setTimer(updated_time + timeTaken * 1000 * 60);
       })
       .catch((error) => {
         console.error("There was a problem with the fetch operation:", error);
