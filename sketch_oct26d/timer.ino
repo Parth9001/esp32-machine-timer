@@ -6,9 +6,11 @@
 #include <LiquidCrystal_I2C.h>
 #include <time.h>
 
-const char* ssid = "TP-Link_5708";
+// const char* ssid = "TP-Link_5708";
+const char* ssid = "So Ja Bro";
 // const char* ssid = "H5Tech";
-const char* password = "93970105";
+// const char* password = "93970105";
+const char* password = "areysojabro";
 // const char* password = "hostel5tech";
 const int num = 10;
 // const int buttonPins[num] = {19,12,27,25,33,32,4,5,18,23};
@@ -87,10 +89,10 @@ void loop() {
 
   if(timerRunning){
     lcd.setCursor(0, 0);
-    lcd.print(" Timer Running");
+    lcd.print("Machine In Use");
     time_taken = -(time(NULL) - startingTimer)/60 + tempTimer;
     // Serial.println(time(NULL)-startingTimer);
-    delay(1000);
+    delay(2000);
   }else{
     lcd.setCursor(0, 0);
     lcd.print("   Enter Time   ");
@@ -158,14 +160,16 @@ void handleNumberButtonPress(int number) {
   lastButtonClick=time(NULL);
 }
 
-// String HOST_NAME = "http://192.168.0.113:8000/";
-String HOST_NAME = "http://192.168.1.100:8000/";
+String HOST_NAME = "http://192.168.132.101:8000/";
+// String HOST_NAME = "http://192.168.1.100:8000/";
+// String HOST_NAME = "http://172.20.10.5:8000";
 // String HOST_NAME = "https://3e18-103-21-127-76.ngrok-free.app/";
+// String HOST_NAME = "https://d1fb-2402-8100-2703-c2fe-dcf5-16f3-a6c6-109f.ngrok-free.app/";
 String PATH_NAME = "timer/1";
 
 void handleConfirmButtonPress() {
   bool reqSent = false;
-  if(time_taken != 0 && timerRunning == false){
+  if(timerRunning == false){
     lcd.clear();
     lcd.setCursor(0, 0);
     lcd.print("CONFIRMED!");

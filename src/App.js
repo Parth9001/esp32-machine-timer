@@ -40,7 +40,7 @@ function App() {
   let updated_time;
 
   useEffect(() => {
-    fetch("http://192.168.0.111:8000/timer/1")
+    fetch("http://192.168.132.101:8000/timer/1")
       .then((response) => {
         if (!response.ok) {
           throw new Error("Network response was not ok");
