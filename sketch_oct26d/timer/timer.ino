@@ -89,10 +89,10 @@ void loop() {
 
   if(timerRunning){
     lcd.setCursor(0, 0);
-    lcd.print("Machine In Use");
+    lcd.print(" Machine In Use");
     time_taken = -(time(NULL) - startingTimer)/60 + tempTimer;
     // Serial.println(time(NULL)-startingTimer);
-    delay(2000);
+    delay(1000);
   }else{
     lcd.setCursor(0, 0);
     lcd.print("   Enter Time   ");
